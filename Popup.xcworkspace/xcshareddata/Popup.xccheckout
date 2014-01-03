@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>DBDAE22B-B72C-4A54-9E63-07D79118C811</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Popup</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>669EE1FD-069F-4C4A-BBF6-F50B8360D2E3</key>
+		<string>ssh://github.com/soheil/capric.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Popup.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>669EE1FD-069F-4C4A-BBF6-F50B8360D2E3</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/soheil/capric.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>669EE1FD-069F-4C4A-BBF6-F50B8360D2E3</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>669EE1FD-069F-4C4A-BBF6-F50B8360D2E3</string>
+			<key>IDESourceControlWCCName</key>
+			<string>capric</string>
+		</dict>
+	</array>
+</dict>
+</plist>
