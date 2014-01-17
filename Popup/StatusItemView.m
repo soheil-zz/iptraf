@@ -9,6 +9,8 @@
 @synthesize action = _action;
 @synthesize target = _target;
 
+double val = 1.2;
+
 NSTextField *text;
 
 #pragma mark -
@@ -30,93 +32,7 @@ NSTextField *text;
     text.bezeled = NO;
     text.editable = NO;
     text.drawsBackground = NO;
-    text.stringValue = @"Rocket #9 take off to the planet (to the planet)\
-    Venus\
-    Aphrodite lady seashell bikini (garden panty)\
-    Venus\
-    Let's blast off to a new dimension (in your bedroom)\
-    Venus\
-    Aphrodite lady seashell bikini (get with me)\
-    Venus\
-    \
-    I can't help the way I'm feeling\
-    Goddess of love, please take me to your leader\
-    I can't help, I keep on dancing\
-    Goddess of love, goddess of love\
-    \
-    Take me to your planet (to the planet)\
-    Take me to your planet (to the planet)\
-    Take me to your leader (to the planet)\
-    Your leader, your leader (to the planet)\
-    Take me to your planet (to the planet)\
-    Take me to your planet (to the planet)\
-    Take me to your Venus (to the planet)\
-    Your Venus, your Venus\
-    \
-    When you touch me, I die\
-    Just a little inside\
-    I wonder if this could be love\
-    This could be love\
-    'Cause you're out of this world\
-    Galaxy, space, and time\
-    I wonder if this could be love (Venus)\
-    \
-    Have an oyster, baby, it's Aphrod-isy\
-    Act sleazy\
-    Venus\
-    Worship to the land a girl from the planet (to the planet)\
-    To the planet\
-    \
-    I can't help the way I'm feeling\
-    Goddess of love, please take me to your leader\
-    I can't help, I keep on dancing\
-    Goddess of love, goddess of love\
-    \
-    Take me to your planet (to the planet)\
-    Take me to your planet (to the planet)\
-    Take me to your leader (to the planet)\
-    Your leader, your leader (to the planet)\
-    Take me to your planet (to the planet)\
-    Take me to your planet (to the planet)\
-    Take me to your Venus (to the planet)\
-    Your Venus, your Venus\
-    \
-    When you touch me, I die\
-    Just a little inside\
-    I wonder if this could be love\
-    This could be love\
-    'Cause you're out of this world\
-    Galaxy, space, and time\
-    I wonder if this could be love, this could be\
-    \
-    Love (wonder if this could be love, this could be love)\
-    Goddess of love (wonder if this could be love)\
-    Venus\
-    \
-    Neptune, go\
-    Now serve Pluto\
-    Saturn, Jupiter\
-    Mercury, Venus, uh ha!\
-    Uranus!\
-    Don't you know my ass is famous?\
-    Mars, now serve for the gods\
-    Earth, serve for the stars!\
-    \
-    When you touch me, I die\
-    Just a little inside\
-    I wonder if this could be love\
-    This could be love\
-    'Cause you're out of this world\
-    Galaxy, space, and time\
-    I wonder if this could be love, this could be\
-    \
-    Love (wonder if this could be love, this could be love)\
-    Goddess of love (wonder if this could be love)\
-    Venus\
-    \
-    \
-    \
-";
+    text.stringValue = @"1.2";
     [self addSubview:text];
     
     [NSTimer scheduledTimerWithTimeInterval:0.04
@@ -130,11 +46,38 @@ NSTextField *text;
 
 - (void)moveText
 {
-    NSRect frame = text.frame;
-    frame.origin.x -= .5;
-    text.frame = frame;
+//    val += .01;
+    text.stringValue = [self runScript:@"ssh.sh"];
 }
 
+-(NSString *)runScript:(NSString*)scriptName
+{
+    NSTask *task;
+    task = [[NSTask alloc] init];
+    [task setLaunchPath: @"/bin/sh"];
+    
+    NSArray *arguments;
+    NSString* newpath = [[NSBundle mainBundle] pathForResource:@"ssh" ofType:@"sh"];
+    NSLog(@"shell script path: %@",newpath);
+    arguments = [NSArray arrayWithObjects:newpath, nil];
+    [task setArguments: arguments];
+    
+    NSPipe *pipe;
+    pipe = [NSPipe pipe];
+    [task setStandardOutput: pipe];
+    
+    NSFileHandle *file;
+    file = [pipe fileHandleForReading];
+    
+    [task launch];
+    
+    NSData *data;
+    data = [file readDataToEndOfFile];
+    
+    NSString *string;
+    string = [[NSString alloc] initWithData: data encoding: NSUTF8StringEncoding];
+    return string;
+}
 
 #pragma mark -
 
